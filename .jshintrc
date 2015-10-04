@@ -1,0 +1,19 @@
+{
+	"node": true,
+	"esnext": true,
+	"bitwise": true,
+	"curly": true,
+	"immed": true,
+	"newcap": true,
+	"noarg": true,
+	"undef": true,
+	"unused": "vars",
+  "globals": {
+    "describe": false,
+    "it": false,
+    "before": false,
+    "beforeEach": false,
+    "after": false,
+    "afterEach": false
+  }
+}

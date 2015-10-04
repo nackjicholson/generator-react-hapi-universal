@@ -1,0 +1,50 @@
+{
+  "name": "generator-react-hapi-universal",
+  "version": "0.0.0",
+  "description": "Scaffold a Universal JavaScript app using React, hapijs, and react-router",
+  "license": "MIT",
+  "repository": "nackjicholson/generator-react-hapi-universal",
+  "author": {
+    "name": "Will Vaughn",
+    "email": "willieviseoae@gmail.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "app"
+  ],
+  "keywords": [
+    "React",
+    "ReactJS",
+    "jsx",
+    "hapi",
+    "hapijs",
+    "react-router",
+    "server side rendering",
+    "isomorphic javascript",
+    "universal javascript",
+    "yeoman-generator",
+    "plugin",
+    "boilerplate",
+    "template",
+    "scaffold",
+    "ECMASCRIPT 6",
+    "gulp"
+  ],
+  "dependencies": {
+    "chalk": "^1.1.1",
+    "lodash": "^3.10.1",
+    "superb": "^1.2.0",
+    "underscore.string": "^3.2.2",
+    "yeoman-generator": "^0.20.3",
+    "yosay": "^1.0.5"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.3",
+    "yeoman-assert": "^2.1.0"
+  }
+}
