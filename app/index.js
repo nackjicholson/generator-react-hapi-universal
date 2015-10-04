@@ -4,10 +4,6 @@ var superb = require('superb');
 var _s = require('underscore.string');
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
-var _ = require('lodash');
-
-// Prevent templating of ecmascript6 {} deconstruction syntax as template vars.
-_.templateSettings.interpolate = /<%=([\s\S]+?)%>/g;
 
 module.exports = yeoman.generators.Base.extend({
   prompting: function () {
@@ -56,29 +52,18 @@ module.exports = yeoman.generators.Base.extend({
   },
   writing: {
     appFiles: function() {
-      var server = _.template(
-        this.fs.read(this.templatePath('lib/_server.js'))
-      );
+      this.template('_package.json', 'package.json', this.props);
+      this.template('_README.md', 'README.md', this.props);
+      this.template('lib/_server.js', 'lib/server.js', this.props, {
+        interpolate: /<%=([\s\S]+?)%>/g
+      });
 
       this.copy('server.js', 'server.js');
-
-      this.template('_package.json', 'package.json', this.props);
-      this.fs.copyTpl(
-        this.templatePath('_README.md'),
-        this.destinationPath('README.md'),
-        this.props
-      );
-
-      this.fs.write(this.destinationPath('lib/server.js'), server(this.props));
-
-      this.fs.copy(
-        this.templatePath('lib/loadPlugins.js'),
-        this.destinationPath('lib/loadPlugins.js')
-      );
+      this.copy('lib/loadPlugins.js', 'lib/loadPlugins.js');
 
       this.directory('lib/app', 'lib/app');
 
-      // Using bulKDirectory to skip templating, in order to get around
+      // Using bulkDirectory to skip templating, in order to get around
       // a bug where it tries to template things inside bundle.js
       this.bulkDirectory('lib/public', 'lib/public');
     },
